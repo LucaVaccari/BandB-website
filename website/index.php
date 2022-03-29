@@ -9,7 +9,9 @@
 </head>
 
 <body>
-
+    <a href="php/book.php">Prenota</a>
+    <br />
+    <a>Gestisci prenotazioni</a>
 </body>
 
 </html>
