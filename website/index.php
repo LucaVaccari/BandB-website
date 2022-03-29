@@ -11,7 +11,7 @@
 <body>
     <a href="php/book.php">Prenota</a>
     <br />
-    <a>Gestisci prenotazioni</a>
+    <a href="php/handleBookings.php">Gestisci prenotazioni</a>
 </body>
 
 </html>

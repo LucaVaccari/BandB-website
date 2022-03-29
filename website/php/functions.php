@@ -1,6 +1,5 @@
 <?php
 
-
 function connect()
 {
     $address = "localhost";

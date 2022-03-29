@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport">
-    <title>B&B</title>
+    <title>Prenota</title>
 </head>
 
 <body>
