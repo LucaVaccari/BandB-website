@@ -27,4 +27,4 @@ mysqli_query($connection, "INSERT INTO `bookings`(`number_of_people`, `start_dat
 
 print_error($connection);
 
-header("../index.php");
+header("Location: ../index.php", true);

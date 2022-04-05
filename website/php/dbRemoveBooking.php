@@ -6,4 +6,4 @@ mysqli_query($connection, "DELETE FROM bookings WHERE booking_id = $_GET[id]");
 
 print_error($connection);
 
-header("./handleBookings.php");
+header("Location: ./handleBookings.php", true);

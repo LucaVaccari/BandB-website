@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <a href="../index.php">Back</a>
     <table border>
         <tr>
             <th>Id prenotazione</th>
@@ -24,6 +25,7 @@
         $connection = connect();
         $bookings = mysqli_query($connection, "SELECT * FROM bookings JOIN rooms USING(room_id)");
         if (!$bookings || mysqli_num_rows($bookings) == 0) {
+            echo "</table>";
             echo "EMPTY";
         } else {
             while ($booking = mysqli_fetch_array($bookings)) {
@@ -38,9 +40,9 @@
                 echo "<td><a href='dbRemoveBooking.php?id=$booking[booking_id]'>Cancella</a></td>";
                 echo "</tr>";
             }
+            echo "</table>";
         }
         ?>
-    </table>
 </body>
 
 </html>

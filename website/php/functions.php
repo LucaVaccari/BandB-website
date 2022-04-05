@@ -18,6 +18,7 @@ function connect()
 function print_error($connection)
 {
     if (mysqli_errno($connection)) {
+        echo "ERROR: ";
         echo mysqli_error($connection);
         echo '<br />';
     }

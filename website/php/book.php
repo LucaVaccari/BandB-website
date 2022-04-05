@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <a href="../index.php">Back</a>
     <form action="dbBook.php" method="post">
         <!-- Room selection -->
         <h4>Selezione stanza</h4>
