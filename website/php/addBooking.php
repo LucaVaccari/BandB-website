@@ -27,7 +27,7 @@
             ?>
         </select>
         <img id="room_info" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/1200px-Infobox_info_icon.svg.png" alt="Info" width="30em" style="vertical-align:middle">
-        <span id="room_info_popup" style="display: none">SUS</span>
+        <span id="room_info_popup" style="display: none">No info</span>
         <!-- User info -->
         <h4>Informazioni utente</h4>
         <label for="user_fc">Codice fiscale</label>
@@ -66,6 +66,24 @@
 
         <button type="submit">PRENOTA!</button>
     </form>
+
+    <?php
+    require_once("functions.php");
+    $bookings = mysqli_query(connect(), "SELECT * FROM bookings ORDER BY booking_id");
+    echo "<script>let bookings = [];</script>";
+    if (mysqli_num_rows($bookings) > 0) {
+        while ($booking = mysqli_fetch_array($bookings)) {
+            echo "<script>
+                bookings[$booking[booking_id]] = {
+                    number_of_people: '$booking[number_of_people]', 
+                    start_date: '$booking[start_date]',
+                    end_date: '$booking[end_date]',
+                    room_id: '$booking[room_id]'
+                }
+            </script>";
+        }
+    }
+    ?>
 
     <script src="../js/addBookingChecks.js"></script>
 </body>
