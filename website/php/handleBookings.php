@@ -37,7 +37,12 @@
                 echo "<td>$booking[breakfast_included]</td>";
                 echo "<td>$booking[user_fc]</td>";
                 echo "<td>$booking[name]</td>";
-                echo "<td><a href='dbRemoveBooking.php?id=$booking[booking_id]'>Cancella</a></td>";
+                if ($booking['paid']) {
+                    echo "<td><a href='payBookingAction.php?id=$booking[booking_id]&paid=$booking[paid]'>Annulla pagamento</a></td>";
+                } else {
+                    echo "<td><a href='payBookingAction.php?id=$booking[booking_id]&paid=$booking[paid]'>Effettua pagamento</a></td>";
+                }
+                echo "<td><a href='removeBookingAction.php?id=$booking[booking_id]'>Cancella</a></td>";
                 echo "</tr>";
             }
             echo "</table>";

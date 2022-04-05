@@ -10,7 +10,7 @@
 
 <body>
     <a href="../index.php">Back</a>
-    <form action="dbBook.php" method="post">
+    <form action="bookAction.php" method="post">
         <!-- Room selection -->
         <h4>Selezione stanza</h4>
         <select name="room_id" id="room_id">

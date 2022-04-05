@@ -9,9 +9,11 @@
 </head>
 
 <body>
-    <a href="php/book.php">Prenota</a>
+    <a href="php/book.php">Prenotazione</a>
     <br />
-    <a href="php/handleBookings.php">Gestisci prenotazioni</a>
+    <a href="php/handleRooms.php">Gestione stanze</a>
+    <br />
+    <a href="php/handleBookings.php">Gestione prenotazioni</a>
 </body>
 
 </html>

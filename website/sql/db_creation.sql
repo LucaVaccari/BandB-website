@@ -19,6 +19,7 @@ CREATE TABLE bookings(
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     breakfast_included TINYINT(1),
+    paid TINYINT(1),
     user_fc VARCHAR(15) NOT NULL,
     room_id INT NOT NULL,
     FOREIGN KEY(user_fc) REFERENCES users(user_fc),
