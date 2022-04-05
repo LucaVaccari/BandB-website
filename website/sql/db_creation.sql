@@ -10,7 +10,7 @@ CREATE TABLE users(
 CREATE TABLE rooms(
     room_id INT NOT NULL PRIMARY KEY,
     capacity INT NOT NULL,
-    nighty_cost DECIMAL(5, 2) NOT NULL,
+    nightly_cost DECIMAL(5, 2) NOT NULL,
     name VARCHAR(15)
 );
 CREATE TABLE bookings(
