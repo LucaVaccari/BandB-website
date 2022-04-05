@@ -1,12 +1,21 @@
 # B&B
 
 È stata richiesta la realizzazione di un sito web per la gestione di un bed & breakfast.
-Il sito sarà utilizzabile dalla prospettiva del cliente e di un amministratore.
+Il sito sarà utilizzabile da un addetto del personale a diretto contatto con il cliente.
 
-Il cliente potrà prenotare scegliendo una stanza, il numero di giorni di permanenza e il numero di persone (nei limiti della capacità della stanza), 
-ma per farlo dovrà prima essersi registrato inserendo i suoi dati personali.
+Si potrà prenotare una stanza specificando:
+ - la stanza
+ - i dati anagrafici del cliente
+ - il numero di persone che soggiorneranno
+ - il periodo di soggiorno (data di inizio e di fine)
+ - se la colazione è inclusa o meno
 
-Un amministratore, che potrà accedere alla sezione solo con il relativo codice fornitogli dalla direzione, potrà gestire (aggiungere, rimuovere, modificare) tutti i dati delle tabelle della base dati.
+Il pagamento potrà essere effettuato in qualsiasi momento precedente alla prima notte di soggiorno fisicamente alla cassa.
+
+È anche possibile annullare una prenotazione (ma non modificarla), versando fisicamente alla cassa una quota pari al 5% del costo del soggiorno.
+In tal caso il gestore delle prenotazioni potrà rimuovere la prenotazione dal database mediante l'apposita pagina di gestione delle prenotazioni.
+
+In caso di non comunicata assenza sarà necessario pagare una penale pari al 25% del costo del soggiorno.
 
 ## Analisi
 
@@ -32,6 +41,7 @@ Si definisce quindi la relazione **Booking**, con i seguenti attributi:
     - *start_date*: data di inizio dell'alloggio (maggiore della data in cui è fatta la prenotazione)
     - *end_date*: data di fine dell'alloggio (maggiore della *start_date*)
     - *breakfast_included*: indica se la colazione è inclusa o meno (il costo aggiuntivo sarà calcolato partendo da un valore contenuto in un db chiave-valore)
+    - *paid*: indica se il prezzo è stato pagato alla cassa o meno
 
 ## Modello concettuale
 
