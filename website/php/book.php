@@ -25,11 +25,13 @@
             ?>
         </select>
         <!-- TODO: room info button/popup -->
+        <button>Info</button>
         <!-- User info -->
         <h4>Informazioni utente</h4>
         <label for="user_fc">Codice fiscale</label>
         <input type="text" name="user_fc" id="user_fc" maxlength="16" size="16">
         <!-- TODO: search button for autocompleting -->
+        <button>Autocomplete</button>
         <br />
         <label for="first_name">Nome</label>
         <input type="text" name="first_name" id="first_name" maxlength="15" size="15">
@@ -63,6 +65,20 @@
 
         <button type="submit">PRENOTA!</button>
     </form>
+
+    <script>
+        let today = new Date();
+        let date = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
+        document.getElementById("start_date").setAttribute("min", date);
+        document.getElementById("end_date").setAttribute("min", date);
+        document.getElementById("birth_date").setAttribute("max", date);
+        document.getElementById("start_date").addEventListener("change", event => {
+            document.getElementById("end_date").setAttribute("min", event.target.value);
+        });
+        document.getElementById("end_date").addEventListener("change", event => {
+            document.getElementById("start_date").setAttribute("max", event.target.value);
+        });
+    </script>
 </body>
 
 </html>
