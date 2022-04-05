@@ -10,7 +10,7 @@
 
 <body>
     <a href="../index.php">Back</a>
-    <form action="bookAction.php" method="post">
+    <form action="addBookingAction.php" method="post">
         <!-- Room selection -->
         <h4>Selezione stanza</h4>
         <select name="room_id" id="room_id">
@@ -21,7 +21,7 @@
             if (mysqli_num_rows($rooms) > 0) {
                 while ($room = mysqli_fetch_array($rooms)) {
                     echo "<option value='$room[room_id]'>$room[room_id] - $room[name]</option>";
-                    echo "<script>rooms[$room[room_id]] = {capacity: '$room[capacity]', nightly_cost: '$room[nighty_cost]'}</script>";
+                    echo "<script>rooms[$room[room_id]] = {capacity: '$room[capacity]', cost_per_night: '$room[cost_per_night]'}</script>";
                 }
             }
             ?>
@@ -89,10 +89,10 @@
         });
 
         // ROOM INFO
-        document.getElementById("room_info_popup").innerHTML = `Capacity: ${rooms[Object.keys(rooms)[0]].capacity}, Cost per night: ${rooms[Object.keys(rooms)[0]].nightly_cost}`;
+        document.getElementById("room_info_popup").innerHTML = `Capacity: ${rooms[Object.keys(rooms)[0]].capacity}, Cost per night: ${rooms[Object.keys(rooms)[0]].cost_per_night}`;
         document.getElementById("room_id").addEventListener("change", event => {
             let room = rooms[event.target.value];
-            document.getElementById("room_info_popup").innerHTML = `Capacity: ${room.capacity}, Cost per night: ${room.nightly_cost}`;
+            document.getElementById("room_info_popup").innerHTML = `Capacity: ${room.capacity}, Cost per night: ${room.cost_per_night}`;
         })
 
         // TODO: check room availability

@@ -30,7 +30,7 @@ Per la modellazione della base dati si individuano le seguenti entità:
  - **Room**: rappresenta una stanza che può essere prenotata da un utente
    - *room_id*: id univoco per identificare una stanza, usato come chiave primaria
    - *capacity*: numero di persone massime che possono alloggiare nella stanza
-   - *nightly_cost*: costo della stanza per persona per notte
+   - *cost_per_night*: costo della stanza per persona per notte
    - *name*: nome opzionale dato alla stanza
 
 La relazione tra User e Room è di cardinalità M ad N, poiché un utente, in periodi differenti, può prenotare più stanze e ogni stanza, sempre in periodi differenti, può essere prenotata da più utenti. La relazione tra le due entità deve necessariamente contenere il periodo di prenotazione.
@@ -53,6 +53,6 @@ A partire dalla precedente analisi si realizza il seguente modello concettuale.
 
 Users(**user_fc**, first_name, last_name, birth_date, address)
 
-Rooms(**room_id**, capacity, nightly_cost, name)
+Rooms(**room_id**, capacity, cost_per_night, name)
 
-Bookings(**booking_id**, number_of_people, start_date, end_date, breakfast_included, *room_id*, *user_fc*)
+Bookings(**booking_id**, number_of_people, start_date, end_date, breakfast_included, paid, *room_id*, *user_fc*)

@@ -29,7 +29,7 @@
                 echo "<tr>";
                 echo "<td>$room[room_id]</td>";
                 echo "<td>$room[capacity]</td>";
-                echo "<td>$room[nighty_cost]</td>";
+                echo "<td>$room[cost_per_night]</td>";
                 echo "<td>$room[name]</td>";
                 echo "<td><a href='removeRoomAction.php?id=$room[room_id]'>Cancella</a></td>";
                 echo "</tr>";
@@ -38,7 +38,8 @@
         }
         ?>
 
-        <a href="addRoomAction.php">Aggiungi stanza</a>
+        <br />
+        <a href="addRoom.php">Aggiungi stanza</a>
 </body>
 
 </html>
