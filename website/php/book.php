@@ -16,16 +16,18 @@
         <select name="room_id" id="room_id">
             <?php
             require_once "functions.php";
-            $rooms = mysqli_query(connect(), "SELECT * FROM rooms");
+            $rooms = mysqli_query(connect(), "SELECT * FROM rooms ORDER BY room_id");
+            echo "<script>let rooms = [];</script>";
             if (mysqli_num_rows($rooms) > 0) {
                 while ($room = mysqli_fetch_array($rooms)) {
                     echo "<option value='$room[room_id]'>$room[room_id] - $room[name]</option>";
+                    echo "<script>rooms[$room[room_id]] = {capacity: '$room[capacity]', nightly_cost: '$room[nighty_cost]'}</script>";
                 }
             }
             ?>
         </select>
-        <!-- TODO: room info button/popup -->
-        <button>Info</button>
+        <img id="room_info" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/1200px-Infobox_info_icon.svg.png" alt="Info" width="30em" style="vertical-align:middle">
+        <span id="room_info_popup" style="display: none">SUS</span>
         <!-- User info -->
         <h4>Informazioni utente</h4>
         <label for="user_fc">Codice fiscale</label>
@@ -51,7 +53,6 @@
         <input type="number" name="number_of_people" id="number_of_people">
         <br />
         <label for="start_date">Data di inizio alloggio</label>
-        <!-- TODO: set min date to today -->
         <input type="date" name="start_date" id="start_date">
         <br />
         <label for="end_date">Data di fine alloggio</label>
@@ -67,6 +68,7 @@
     </form>
 
     <script>
+        // SET DATE LIMITS
         let today = new Date();
         let date = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
         document.getElementById("start_date").setAttribute("min", date);
@@ -78,6 +80,22 @@
         document.getElementById("end_date").addEventListener("change", event => {
             document.getElementById("start_date").setAttribute("max", event.target.value);
         });
+
+        document.getElementById("room_info").addEventListener("mouseenter", event => {
+            document.getElementById("room_info_popup").style.display = "inline";
+        });
+        document.getElementById("room_info").addEventListener("mouseleave", event => {
+            document.getElementById("room_info_popup").style.display = "none";
+        });
+
+        // ROOM INFO
+        document.getElementById("room_info_popup").innerHTML = `Capacity: ${rooms[Object.keys(rooms)[0]].capacity}, Cost per night: ${rooms[Object.keys(rooms)[0]].nightly_cost}`;
+        document.getElementById("room_id").addEventListener("change", event => {
+            let room = rooms[event.target.value];
+            document.getElementById("room_info_popup").innerHTML = `Capacity: ${room.capacity}, Cost per night: ${room.nightly_cost}`;
+        })
+
+        // TODO: check room availability
     </script>
 </body>
 
