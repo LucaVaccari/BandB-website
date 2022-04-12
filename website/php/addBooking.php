@@ -28,12 +28,14 @@
         </select>
         <img id="room_info" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/1200px-Infobox_info_icon.svg.png" alt="Info" width="30em" style="vertical-align:middle">
         <span id="room_info_popup" style="display: none">No info</span>
+        <br />
+        <span id="room_bookings">Room always available</span>
         <!-- User info -->
         <h4>Informazioni utente</h4>
         <label for="user_fc">Codice fiscale</label>
         <input type="text" name="user_fc" id="user_fc" maxlength="16" size="16">
         <!-- TODO: search button for autocompleting -->
-        <button>Autocomplete</button>
+        <button disabled>Autocomplete</button>
         <br />
         <label for="first_name">Nome</label>
         <input type="text" name="first_name" id="first_name" maxlength="15" size="15">
@@ -54,9 +56,11 @@
         <br />
         <label for="start_date">Data di inizio alloggio</label>
         <input type="date" name="start_date" id="start_date">
+        <span id="start_date_info"></span>
         <br />
         <label for="end_date">Data di fine alloggio</label>
         <input type="date" name="end_date" id="end_date">
+        <span id="end_date_info"></span>
         <br />
         <label for="breakfast_included">Includi colazione</label>
         <input type="checkbox" name="breakfast_included" id="breakfast_included">
@@ -64,7 +68,7 @@
         <h4>Costo</h4>
         <!-- TODO: calculate cost -->
 
-        <button type="submit">PRENOTA!</button>
+        <button id="submit_button" type="submit">PRENOTA!</button>
     </form>
 
     <?php
@@ -75,10 +79,10 @@
         while ($booking = mysqli_fetch_array($bookings)) {
             echo "<script>
                 bookings[$booking[booking_id]] = {
-                    number_of_people: '$booking[number_of_people]', 
-                    start_date: '$booking[start_date]',
-                    end_date: '$booking[end_date]',
-                    room_id: '$booking[room_id]'
+                    numberOfPeople: '$booking[number_of_people]', 
+                    startDate: '$booking[start_date]',
+                    endDate: '$booking[end_date]',
+                    roomId: '$booking[room_id]'
                 }
             </script>";
         }
