@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <a href="../index.php">Back</a>
+    <a href="../../index.php">Back</a>
     <table border>
         <tr>
             <th>Id stanza</th>
