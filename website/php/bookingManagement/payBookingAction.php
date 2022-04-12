@@ -1,5 +1,5 @@
 <?php
-require_once("functions.php");
+require_once("../functions.php");
 
 $connection = connect();
 $paid = 1 - $_GET["paid"];

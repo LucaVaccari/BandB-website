@@ -21,7 +21,7 @@
             <th>Stanza</th>
         </tr>
         <?php
-        require_once("functions.php");
+        require_once("../functions.php");
         $connection = connect();
         $bookings = mysqli_query($connection, "SELECT * FROM bookings JOIN rooms USING(room_id)");
         if (!$bookings || mysqli_num_rows($bookings) == 0) {

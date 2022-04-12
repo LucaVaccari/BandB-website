@@ -18,7 +18,7 @@
             <th>Nome stanza</th>
         </tr>
         <?php
-        require_once("functions.php");
+        require_once("../functions.php");
         $connection = connect();
         $rooms = mysqli_query($connection, "SELECT * FROM rooms");
         if (!$rooms || mysqli_num_rows($rooms) == 0) {

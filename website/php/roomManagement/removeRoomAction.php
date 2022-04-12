@@ -1,5 +1,5 @@
 <?php
-require_once("functions.php");
+require_once("../functions.php");
 
 $connection = connect();
 mysqli_query($connection, "DELETE FROM rooms WHERE room_id = $_GET[id]");

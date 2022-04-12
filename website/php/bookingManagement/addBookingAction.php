@@ -1,6 +1,6 @@
 <?php
 
-require_once("functions.php");
+require_once("../functions.php");
 
 $connection = connect();
 
@@ -22,8 +22,8 @@ if ($result && mysqli_num_rows($result) > 0) {
 print_error($connection);
 
 // REGISTER BOOKING
-mysqli_query($connection, "INSERT INTO `bookings`(`number_of_people`, `start_date`, `end_date`, `breakfast_included`, `user_fc`, `room_id`) 
-    VALUES ('$_POST[number_of_people]','$_POST[start_date]','$_POST[end_date]','$_POST[breakfast_included]','$_POST[user_fc]','$_POST[room_id]')");
+mysqli_query($connection, "INSERT INTO `bookings`(`number_of_people`, `start_date`, `end_date`, `breakfast_included`, `user_fc`, `room_id`, `paid`) 
+    VALUES ('$_POST[number_of_people]','$_POST[start_date]','$_POST[end_date]','$_POST[breakfast_included]','$_POST[user_fc]','$_POST[room_id]', '0')");
 
 print_error($connection);
 

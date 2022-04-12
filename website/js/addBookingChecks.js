@@ -41,6 +41,13 @@ if (Object.keys(rooms).length > 0) {
   });
 }
 
+// USER AUTOCOMPLETE
+document.getElementById("autocomplete_user").addEventListener("click", () => {
+  const fc = document.getElementById("user_fc").value;
+  // TODO: autocomplete fields
+});
+
+// ROOM AVAILABILITY
 function checkRoomAvailability() {
   let roomId = room_id_element.value;
   let roomBookings = bookings.filter((b) => b.roomId == roomId);

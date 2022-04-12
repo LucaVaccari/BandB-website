@@ -9,13 +9,13 @@
 </head>
 
 <body>
-    <a href="../index.php">Back</a>
+    <a href="../../index.php">Back</a>
     <form action="addBookingAction.php" method="post">
         <!-- Room selection -->
         <h4>Selezione stanza</h4>
         <select name="room_id" id="room_id">
             <?php
-            require_once "functions.php";
+            require_once "../functions.php";
             $rooms = mysqli_query(connect(), "SELECT * FROM rooms ORDER BY room_id");
             echo "<script>let rooms = [];</script>";
             if (mysqli_num_rows($rooms) > 0) {
@@ -35,7 +35,7 @@
         <label for="user_fc">Codice fiscale</label>
         <input type="text" name="user_fc" id="user_fc" maxlength="16" size="16">
         <!-- TODO: search button for autocompleting -->
-        <button disabled>Autocomplete</button>
+        <button id="autocomplete_user" type="button">Autocomplete</button>
         <br />
         <label for="first_name">Nome</label>
         <input type="text" name="first_name" id="first_name" maxlength="15" size="15">
@@ -72,8 +72,9 @@
     </form>
 
     <?php
-    require_once("functions.php");
-    $bookings = mysqli_query(connect(), "SELECT * FROM bookings ORDER BY booking_id");
+    require_once("../functions.php");
+    $connection = connect();
+    $bookings = mysqli_query($connection, "SELECT * FROM bookings ORDER BY booking_id");
     echo "<script>let bookings = [];</script>";
     if (mysqli_num_rows($bookings) > 0) {
         while ($booking = mysqli_fetch_array($bookings)) {
@@ -87,9 +88,24 @@
             </script>";
         }
     }
+
+    $users = mysqli_query($connection, "SELECT * FROM users ORDER BY user_fc");
+    echo "<script>let users = [];</script>";
+    if (mysqli_num_rows($users) > 0) {
+        while ($user = mysqli_fetch_array($users)) {
+            echo "<script>
+                users['$user[user_fc]'] = {
+                    firstName: '$user[first_name]',
+                    lastName: '$user[last_name]',
+                    birthDate: '$user[birth_date]',
+                    address: '$user[address]'
+                };
+            </script>";
+        }
+    }
     ?>
 
-    <script src="../js/addBookingChecks.js"></script>
+    <script src="../../js/addBookingChecks.js"></script>
 </body>
 
 </html>
